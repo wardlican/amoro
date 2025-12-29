@@ -797,9 +797,24 @@ table td:last-child, table th:last-child { width: 40%; word-break: break-all; }
           <td>Whether to enable high availability mode.</td>
       </tr>
       <tr>
+          <td>ha.heartbeat-interval</td>
+          <td>10 s</td>
+          <td>HA heartbeat interval.</td>
+      </tr>
+      <tr>
+          <td>ha.lease-ttl</td>
+          <td>30 s</td>
+          <td>TTL of HA lease.</td>
+      </tr>
+      <tr>
           <td>ha.session-timeout</td>
           <td>30 s</td>
           <td>The Zookeeper session timeout in milliseconds.</td>
+      </tr>
+      <tr>
+          <td>ha.type</td>
+          <td>zk</td>
+          <td>High availability implementation type: zk or database.</td>
       </tr>
       <tr>
           <td>ha.zookeeper-address</td>

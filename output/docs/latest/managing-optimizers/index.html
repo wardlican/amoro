@@ -1190,16 +1190,16 @@ If the optimizer runs normally, you will see an optimizer with the status <code>
 <h3 id="deploy-external-optimizer">Deploy external optimizer</h3>
 <p>You can submit optimizer in your own Flink task development platform or local Flink environment with the following configuration. The main parameters include:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>./bin/flink run-application -t yarn-application <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> -Djobmanager.memory.process.size<span style="color:#f92672">=</span>1024mb <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> -Dtaskmanager.memory.process.size<span style="color:#f92672">=</span>2048mb <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> -Dtaskmanager.memory.managed.size<span style="color:#f92672">=</span>32mb <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> -Dtaskmanager.memory.network.max<span style="color:#f92672">=</span>32mb <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> -Dtaskmanager.memory.network.min<span style="color:#f92672">=</span>32mb <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> -c org.apache.amoro.optimizer.flink.FlinkOptimizer <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> <span style="color:#e6db74">${</span>AMORO_HOME<span style="color:#e6db74">}</span>/plugin/optimizer/flink/optimizer-job.jar <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> -a thrift://127.0.0.1:1261 <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> -g flinkGroup <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> -p <span style="color:#ae81ff">1</span>
+</span></span></span><span style="display:flex;"><span> -Djobmanager.memory.process.size<span style="color:#f92672">=</span>1024mb <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> -Dtaskmanager.memory.process.size<span style="color:#f92672">=</span>2048mb <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> -Dtaskmanager.memory.managed.size<span style="color:#f92672">=</span>32mb <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> -Dtaskmanager.memory.network.max<span style="color:#f92672">=</span>32mb <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> -Dtaskmanager.memory.network.min<span style="color:#f92672">=</span>32mb <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> -c org.apache.amoro.optimizer.flink.FlinkOptimizer <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> <span style="color:#e6db74">${</span>AMORO_HOME<span style="color:#e6db74">}</span>/plugin/optimizer/flink/optimizer-job.jar <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> -a thrift://127.0.0.1:1261 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> -g flinkGroup <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> -p <span style="color:#ae81ff">1</span>
 </span></span></code></pre></div><p>The description of the relevant parameters is shown in the following table:</p>
 <table>
   <thead>
@@ -1269,15 +1269,15 @@ If the optimizer runs normally, you will see an optimizer with the status <code>
 </table>
 <p>Or you can submit optimizer in your own Spark task development platform or local Spark environment with the following configuration. The main parameters include:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>./bin/spark-submit --master yarn --deploy-mode cluster <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> --conf <span style="color:#e6db74">&#34;spark.driver.cores=1&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> --conf <span style="color:#e6db74">&#34;spark.driver.memory=g&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> --conf <span style="color:#e6db74">&#34;spark.executor.cores=1&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> --conf <span style="color:#e6db74">&#34;spark.executor.memory=2g&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> --class org.apache.amoro.optimizer.spark.SparkOptimizer <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> <span style="color:#e6db74">${</span>AMORO_HOME<span style="color:#e6db74">}</span>/plugin/optimizer/spark/optimizer-job.jar <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> -a thrift://127.0.0.1:1261 <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> -g sparkGroup <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> -p <span style="color:#ae81ff">1</span>
+</span></span></span><span style="display:flex;"><span> --conf <span style="color:#e6db74">&#34;spark.driver.cores=1&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> --conf <span style="color:#e6db74">&#34;spark.driver.memory=g&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> --conf <span style="color:#e6db74">&#34;spark.executor.cores=1&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> --conf <span style="color:#e6db74">&#34;spark.executor.memory=2g&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> --class org.apache.amoro.optimizer.spark.SparkOptimizer <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> <span style="color:#e6db74">${</span>AMORO_HOME<span style="color:#e6db74">}</span>/plugin/optimizer/spark/optimizer-job.jar <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> -a thrift://127.0.0.1:1261 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> -g sparkGroup <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> -p <span style="color:#ae81ff">1</span>
 </span></span></code></pre></div><p>The description of the relevant parameters is shown in the following table:</p>
 <table>
   <thead>

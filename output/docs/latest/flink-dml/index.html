@@ -634,10 +634,10 @@
 <h2 id="querying-with-sql">Querying with SQL</h2>
 <p>Amoro tables support reading data in stream or batch mode through Flink SQL. You can switch modes using the following methods:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Run Flink tasks in streaming mode in the current session
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SET</span> execution.runtime<span style="color:#f92672">-</span><span style="color:#66d9ef">mode</span> <span style="color:#f92672">=</span> streaming;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SET</span> execution.runtime<span style="color:#f92672">-</span><span style="color:#66d9ef">mode</span> <span style="color:#f92672">=</span> streaming;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- Run Flink tasks in batch mode in the current session
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SET</span> execution.runtime<span style="color:#f92672">-</span><span style="color:#66d9ef">mode</span> <span style="color:#f92672">=</span> batch;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SET</span> execution.runtime<span style="color:#f92672">-</span><span style="color:#66d9ef">mode</span> <span style="color:#f92672">=</span> batch;
 </span></span></code></pre></div><p>The following Hint Options are supported:</p>
 <table>
   <thead>
@@ -666,17 +666,17 @@
 <p>LogStore does not support bounded reading.</p>
 </blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Run Flink tasks in batch mode in the current session
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SET</span> execution.runtime<span style="color:#f92672">-</span><span style="color:#66d9ef">mode</span> <span style="color:#f92672">=</span> batch;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SET</span> execution.runtime<span style="color:#f92672">-</span><span style="color:#66d9ef">mode</span> <span style="color:#f92672">=</span> batch;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- Enable dynamic table parameter configuration to make hint options configured in Flink SQL effective
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SET</span> <span style="color:#66d9ef">table</span>.<span style="color:#66d9ef">dynamic</span><span style="color:#f92672">-</span><span style="color:#66d9ef">table</span><span style="color:#f92672">-</span><span style="color:#66d9ef">options</span>.enabled<span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SET</span> <span style="color:#66d9ef">table</span>.<span style="color:#66d9ef">dynamic</span><span style="color:#f92672">-</span><span style="color:#66d9ef">table</span><span style="color:#f92672">-</span><span style="color:#66d9ef">options</span>.enabled<span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>;
 </span></span></code></pre></div><h3 id="batch-mode-non-primary-key-table">Batch mode (non-primary key table)</h3>
 <p>Non-primary key tables support reading full data in batch mode, specifying snapshot data with snapshot-id or timestamp, and specifying the incremental data of the snapshot interval.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Read full data
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> unkeyed <span style="color:#75715e">/*+ OPTIONS(&#39;streaming&#39;=&#39;false&#39;)*/</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> unkeyed <span style="color:#75715e">/*+ OPTIONS(&#39;streaming&#39;=&#39;false&#39;)*/</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- Read specified snapshot data
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> unkeyed <span style="color:#75715e">/*+ OPTIONS(&#39;snapshot-id&#39;=&#39;4411985347497777546&#39;)*/</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> unkeyed <span style="color:#75715e">/*+ OPTIONS(&#39;snapshot-id&#39;=&#39;4411985347497777546&#39;)*/</span>;
 </span></span></code></pre></div><p>The supported parameters for bounded reads of non-primary-key tables in BaseStore include:</p>
 <table>
   <thead>
@@ -728,15 +728,15 @@
 </table>
 <h3 id="batch-mode-primary-key-table">Batch mode (primary key table)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Merge on Read the current mixed-format table and return append-only data.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> keyed <span style="color:#75715e">/*+ OPTIONS(&#39;streaming&#39;=&#39;false&#39;, &#39;scan.startup.mode&#39;=&#39;earliest&#39;)*/</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> keyed <span style="color:#75715e">/*+ OPTIONS(&#39;streaming&#39;=&#39;false&#39;, &#39;scan.startup.mode&#39;=&#39;earliest&#39;)*/</span>;
 </span></span></code></pre></div><h3 id="streaming-mode">Streaming mode</h3>
 <p>Amoro supports reading incremental data from FileStore or LogStore in streaming mode.</p>
 <h3 id="streaming-mode-logstore">Streaming mode (LogStore)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Run Flink tasks in streaming mode in the current session
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SET</span> execution.runtime<span style="color:#f92672">-</span><span style="color:#66d9ef">mode</span> <span style="color:#f92672">=</span> streaming;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SET</span> execution.runtime<span style="color:#f92672">-</span><span style="color:#66d9ef">mode</span> <span style="color:#f92672">=</span> streaming;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- Enable dynamic table parameter configuration to make hint options configured in Flink SQL effective
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SET</span> <span style="color:#66d9ef">table</span>.<span style="color:#66d9ef">dynamic</span><span style="color:#f92672">-</span><span style="color:#66d9ef">table</span><span style="color:#f92672">-</span><span style="color:#66d9ef">options</span>.enabled<span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SET</span> <span style="color:#66d9ef">table</span>.<span style="color:#66d9ef">dynamic</span><span style="color:#f92672">-</span><span style="color:#66d9ef">table</span><span style="color:#f92672">-</span><span style="color:#66d9ef">options</span>.enabled<span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> test_table <span style="color:#75715e">/*+ OPTIONS(&#39;mixed-format.read.mode&#39;=&#39;log&#39;) */</span>;
 </span></span></code></pre></div><p>The following Hint Options are supported:</p>
@@ -818,13 +818,13 @@
 </blockquote>
 <h3 id="streaming-mode-filestore-non-primary-key-table">Streaming mode (FileStore non-primary key table)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Run Flink tasks in streaming mode in the current session
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SET</span> execution.runtime<span style="color:#f92672">-</span><span style="color:#66d9ef">mode</span> <span style="color:#f92672">=</span> streaming;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SET</span> execution.runtime<span style="color:#f92672">-</span><span style="color:#66d9ef">mode</span> <span style="color:#f92672">=</span> streaming;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- Enable dynamic table parameter configuration to make hint options configured in Flink SQL effective
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SET</span> <span style="color:#66d9ef">table</span>.<span style="color:#66d9ef">dynamic</span><span style="color:#f92672">-</span><span style="color:#66d9ef">table</span><span style="color:#f92672">-</span><span style="color:#66d9ef">options</span>.enabled <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SET</span> <span style="color:#66d9ef">table</span>.<span style="color:#66d9ef">dynamic</span><span style="color:#f92672">-</span><span style="color:#66d9ef">table</span><span style="color:#f92672">-</span><span style="color:#66d9ef">options</span>.enabled <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- Read incremental data after the current snapshot.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> unkeyed <span style="color:#75715e">/*+ OPTIONS(&#39;monitor-interval&#39;=&#39;1s&#39;)*/</span> ;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> unkeyed <span style="color:#75715e">/*+ OPTIONS(&#39;monitor-interval&#39;=&#39;1s&#39;)*/</span> ;
 </span></span></code></pre></div><p>Hint Options</p>
 <table>
   <thead>
@@ -878,13 +878,13 @@
 <p>After using CDC (Change Data Capture) to ingest data into the lake, you can use the Flink engine to read both stock data and incremental data in the same task without restarting the task, and ensure consistent data reading. Amoro Source will save the file offset information in the Flink state.</p>
 <p>In this way, the task can continue to read data from the last read offset position, ensuring data consistency and being able to process newly arrived incremental data.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Run Flink tasks in streaming mode in the current session
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SET</span> execution.runtime<span style="color:#f92672">-</span><span style="color:#66d9ef">mode</span> <span style="color:#f92672">=</span> streaming;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SET</span> execution.runtime<span style="color:#f92672">-</span><span style="color:#66d9ef">mode</span> <span style="color:#f92672">=</span> streaming;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- Enable dynamic table parameter configuration to make hint options configured in Flink SQL effective
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SET</span> <span style="color:#66d9ef">table</span>.<span style="color:#66d9ef">dynamic</span><span style="color:#f92672">-</span><span style="color:#66d9ef">table</span><span style="color:#f92672">-</span><span style="color:#66d9ef">options</span>.enabled <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SET</span> <span style="color:#66d9ef">table</span>.<span style="color:#66d9ef">dynamic</span><span style="color:#f92672">-</span><span style="color:#66d9ef">table</span><span style="color:#f92672">-</span><span style="color:#66d9ef">options</span>.enabled <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- Incremental unified reading of BaseStore and ChangeStore
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> keyed <span style="color:#75715e">/*+ OPTIONS(&#39;streaming&#39;=&#39;true&#39;, &#39;scan.startup.mode&#39;=&#39;earliest&#39;)*/</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> keyed <span style="color:#75715e">/*+ OPTIONS(&#39;streaming&#39;=&#39;true&#39;, &#39;scan.startup.mode&#39;=&#39;earliest&#39;)*/</span>;
 </span></span></code></pre></div><p>Hint Options</p>
 <table>
   <thead>
@@ -941,7 +941,7 @@
 <p>INSERT OVERWRITE only allows running in Flink Batch mode.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> OVERWRITE unkeyed <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;2022-07-01&#39;</span>);
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- It is also possible to overwrite data for a specific partition:
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> OVERWRITE <span style="color:#f92672">`</span>mixed_catalog<span style="color:#f92672">`</span>.<span style="color:#f92672">`</span>mixed_db<span style="color:#f92672">`</span>.<span style="color:#f92672">`</span>unkeyed<span style="color:#f92672">`</span> PARTITION(<span style="color:#66d9ef">data</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;2022-07-01&#39;</span>) <span style="color:#66d9ef">SELECT</span> <span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#39;b&#39;</span>;
 </span></span></code></pre></div><p>For non-partitioned tables, INSERT OVERWRITE will overwrite the entire data in the table.</p>
 <h3 id="insert-into">INSERT INTO</h3>
@@ -1031,7 +1031,7 @@
 <p>A Lookup Join is used to enrich a table with data that is queried from Amoro Table. The join requires one table to have a processing time attribute and the other table to be backed by a lookup source connector.</p>
 <p>The following example shows the syntax to specify a lookup join.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- amoro flink connector and can be used for lookup joins
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TEMPORARY</span> <span style="color:#66d9ef">TABLE</span> Customers (
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TEMPORARY</span> <span style="color:#66d9ef">TABLE</span> Customers (
 </span></span><span style="display:flex;"><span>    id INT,
 </span></span><span style="display:flex;"><span>    name STRING,
 </span></span><span style="display:flex;"><span>    country STRING,
@@ -1046,7 +1046,7 @@
 </span></span><span style="display:flex;"><span>);
 </span></span><span style="display:flex;"><span>       
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- Create a temporary left table, like from kafka
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TEMPORARY</span> <span style="color:#66d9ef">TABLE</span> orders (
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TEMPORARY</span> <span style="color:#66d9ef">TABLE</span> orders (
 </span></span><span style="display:flex;"><span>    order_id INT,
 </span></span><span style="display:flex;"><span>    total INT,
 </span></span><span style="display:flex;"><span>    customer_id INT,
@@ -1060,7 +1060,7 @@
 </span></span><span style="display:flex;"><span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- enrich each order with customer information
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> o.order_id, o.total, <span style="color:#66d9ef">c</span>.country, <span style="color:#66d9ef">c</span>.zip
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> o.order_id, o.total, <span style="color:#66d9ef">c</span>.country, <span style="color:#66d9ef">c</span>.zip
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> Orders <span style="color:#66d9ef">AS</span> o
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">JOIN</span> Customers <span style="color:#66d9ef">FOR</span> SYSTEM_TIME <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">OF</span> o.proc_time <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">c</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">ON</span> o.customer_id <span style="color:#f92672">=</span> <span style="color:#66d9ef">c</span>.id;
